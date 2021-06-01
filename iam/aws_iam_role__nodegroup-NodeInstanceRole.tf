@@ -17,7 +17,7 @@ resource "aws_iam_role" "eks-nodegroup-ng-ma-NodeInstanceRole-1GFKA1037E1XO" {
   )
   force_detach_policies = false
   max_session_duration  = 3600
-  name                  = "eks-nodegroup-ng-ma-NodeInstanceRole-1GFKA1037E1XO"
+  name                  = format("eks-nodegroup-ng-ma-NodeInstanceRole-%s", var.cluster-name)
   path                  = "/"
   tags = {
     "Name"                                        = "eks-nodegroup-ng-maneksami2/NodeInstanceRole"

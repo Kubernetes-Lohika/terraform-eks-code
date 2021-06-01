@@ -1,5 +1,5 @@
 data "aws_eks_cluster" "eks_cluster" {
-  name = data.terraform_remote_state.cluster.outputs.cluster-name
+  name = data.terraform_remote_state.cluster_remote_state.outputs.cluster-name
 }
 
 output "endpoint" {

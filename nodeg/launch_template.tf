@@ -1,3 +1,13 @@
+resource "tls_private_key" "deployer" {
+  algorithm = "RSA"
+  rsa_bits = 4096
+}
+
+resource "aws_key_pair" "deployer" {
+  key_name   = "eksworkshop"
+  public_key = tls_private_key.deployer.public_key_openssh
+}
+
 resource "aws_launch_template" "lt-ng1" {
   instance_type           = "t3.large"
   key_name                = "eksworkshop"
@@ -5,7 +15,7 @@ resource "aws_launch_template" "lt-ng1" {
   tags                    = {}
   image_id                = data.aws_ssm_parameter.eksami.value
   user_data            = base64encode(local.eks-node-private-userdata)
-  vpc_security_group_ids  = [data.terraform_remote_state.net.outputs.allnodes-sg] 
+  vpc_security_group_ids  = [data.terraform_remote_state.net_remote_state.outputs.allnodes-sg]
   tag_specifications { 
         resource_type = "instance"
     tags = {

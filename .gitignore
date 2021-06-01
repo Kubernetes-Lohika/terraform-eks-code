@@ -41,4 +41,10 @@ remote-*.tf
 **/tf-setup/generated/*
 **/net-v2/*
 **/notused/*
+helpers/
+.aws/
+.idea/
+.DS_Store
+.terraform.lock.hcl
+backend.tf
 

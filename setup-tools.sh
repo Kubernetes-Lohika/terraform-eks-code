@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "Install OS tools"
 sudo yum -y -q -e 0 install  jq moreutils bash-completion nmap
 echo "update aws cli"
@@ -14,6 +15,11 @@ sudo mv terraform /usr/local/bin/
 rm -f terraform_0.15.3_linux_amd64.zip
 mkdir -p $HOME/.terraform.d/plugin-cache
 cp tf-setup/dot-terraform.rc $HOME/.terraformrc
+
+echo "Install Terragrunt"
+wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.29.7/terragrunt_linux_amd64
+sudo mv terragrunt_linux_amd64 /usr/local/bin/terragrunt
+sudo chmod +x /usr/local/bin/terragrunt
 
 echo "Install kubectl"
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
