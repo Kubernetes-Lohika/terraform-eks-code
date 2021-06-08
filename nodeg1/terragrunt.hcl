@@ -6,17 +6,17 @@ remote_state {
     if_exists = "overwrite_terragrunt"
   }
   config = {
-    bucket = "user-terraform-state"
+    bucket = "test-doh6alei-terraform-state"
 
     key = "${path_relative_to_include()}/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
-    dynamodb_table = "user-table"
+    dynamodb_table = "test-table"
     profile = "default"
   }
 }
 inputs = {
-  cluster-name  = "k8s-advanced"
+  user-name  = "test-test"
   aws_region = "us-east-1"
   aws_profile = "default"
 }
